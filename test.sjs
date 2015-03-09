@@ -92,5 +92,4 @@ describe('do', function() {
 			Id.of(a);
 		}).to.eql(Id.of(5));
 	});
-
 });
