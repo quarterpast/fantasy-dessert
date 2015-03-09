@@ -5,4 +5,4 @@ test: test.js
 	mocha test.js
 
 test.js: test.sjs index.sjs
-	sjs -m './index.sjs' test.sjs -o test.js
+	sjs -r -m './index.sjs' test.sjs -o test.js

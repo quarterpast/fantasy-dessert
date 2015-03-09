@@ -47,3 +47,12 @@ describe('>>', function() {
 
 	//TODO test laziness (fantasy-io probably)
 });
+
+describe('do', function() {
+	it('should chain things', function() {
+		expect(do {
+			var a <- Id.of(5);
+			return a;
+		}).to.eql(Id.of(5));
+	});
+});

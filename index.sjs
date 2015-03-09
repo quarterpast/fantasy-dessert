@@ -1,7 +1,9 @@
 /* jshint ignore: start */
 
 operator (>>=) 14 left {$l, $r} => #{
-	$l.chain($r)
+	(function(l) {
+		return l.chain($r.bind(l));
+	}($l))
 }
 
 operator (>=>) 14 left {$l, $r} => #{
@@ -25,23 +27,25 @@ operator (>>) 14 left {$l, $r} => #{
 macro do {
 	rule {
 		{
-			$a:ident <- $m:expr;
-			$rest ...
-		} 
-	} => {
-		($m >>= λ $a -> do {
-			$rest ...
-		})
-	}
-
-	rule {
-		{
 			<- $m:expr;
 			$rest ...
 		}
 	} => {
 		($m >> do {
 			$rest ...
+		})
+	}
+
+	rule {
+		{
+			var $a:ident <- $m:expr;
+			$rest ...
+		}
+	} => {
+		($m >>= function($a) {
+			return do {
+				$rest ...
+			};
 		})
 	}
 
