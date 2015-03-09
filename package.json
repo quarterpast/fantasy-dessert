@@ -1,0 +1,33 @@
+{
+  "name": "fantasy-dessert",
+  "version": "1.0.0",
+  "description": "Sweet.js macros for fantasy-land structures",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quarterto/fantasy-dessert.git"
+  },
+  "keywords": [
+    "fantasy-land",
+    "sweet.js",
+    "macro",
+    "do",
+    "notation",
+    "bind",
+    "haskell"
+  ],
+  "author": "Matt Brennan <matt@153.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/quarterto/fantasy-dessert/issues"
+  },
+  "homepage": "https://github.com/quarterto/fantasy-dessert",
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^2.2.1",
+    "sweet.js": "^0.7.4"
+  }
+}
