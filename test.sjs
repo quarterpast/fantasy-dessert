@@ -55,4 +55,42 @@ describe('do', function() {
 			return a;
 		}).to.eql(Id.of(5));
 	});
+
+	it('should chain a bunch things', function() {
+		expect(do {
+			var a <- Id.of(5);
+			var b <- Id.of(6);
+			return b + 1;
+		}).to.eql(Id.of(7));
+	});
+
+	it('should chain ignoring stuff', function() {
+		expect(do {
+			<- Id.of(5);
+			return 6;
+		}).to.eql(Id.of(6));
+	});
+
+	it('should chain a bunch of things ignoring stuff', function() {
+		expect(do {
+			<- Id.of(5);
+			<- Id.of(6);
+			return 7;
+		}).to.eql(Id.of(7));
+	});
+
+	it('should work without tail return', function() {
+		expect(do {
+			<- Id.of(5);
+			Id.of(6);
+		}).to.eql(Id.of(6));
+	});
+
+	it('should support var bindings', function() {
+		expect(do {
+			var a = 5;
+			Id.of(a);
+		}).to.eql(Id.of(5));
+	});
+
 });
