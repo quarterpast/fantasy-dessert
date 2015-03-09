@@ -1,7 +1,26 @@
-operator (>>=) 14 left {$l, $r} => #{$l.chain($r)}
-operator (>=>) 14 left {$l, $r} => #{λ[$l(#) >>= $r]}
-operator (=>>) 14 left {$l, $r} => #{λ[$l(#) >> $r]}
-operator (>>)  14 left {$l, $r} => #{$l >>= λ[$r]}
+/* jshint ignore: start */
+
+operator (>>=) 14 left {$l, $r} => #{
+	$l.chain($r)
+}
+
+operator (>=>) 14 left {$l, $r} => #{
+	function(a) {
+		return $l(a) >>= $r;
+	}
+}
+
+operator (=>>) 14 left {$l, $r} => #{
+	function(a) {
+		return $l(a) >> $r;
+	}
+}
+
+operator (>>) 14 left {$l, $r} => #{
+	$l >>= function(_) {
+		return $r
+	}
+}
 
 macro do {
 	rule {
